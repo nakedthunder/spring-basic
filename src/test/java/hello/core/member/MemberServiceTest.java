@@ -1,12 +1,19 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
-
-    // memberService 없어서 만들어줌
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
+    //테스트를 실행하기 전에 무조건 AppConfig를 만들고 그다음에 할당을 하고 테스트가 돌아감
+    // 테스트가 2개이면 두번돔
+    @BeforeEach
+    public void beforEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
 
     @Test
     void join() {

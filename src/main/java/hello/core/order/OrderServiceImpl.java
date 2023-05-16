@@ -8,9 +8,18 @@ import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-    // 구현체: MemberRespository, DiscountPolicy
-    private final MemberRespository memberRespository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    // 기존의 인터페이스, 구현체를 수정한다. 여기서는 memberRepository, discountPolicy를 사용
+    // 1. 구현체를 지운다.
+    // 2. 생성자를 만들어준다.
+    // tip: final로 되어있으면, 생성자로 할당이 된다.
+    private final MemberRespository memberRespository;
+    private final DiscountPolicy discountPolicy;
+
+    // 생성자를 통해 구현체를 넣어줌
+    public OrderServiceImpl(MemberRespository memberRespository, DiscountPolicy discountPolicy) {
+        this.memberRespository = memberRespository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
