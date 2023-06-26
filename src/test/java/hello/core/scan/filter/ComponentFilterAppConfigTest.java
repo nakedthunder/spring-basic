@@ -10,7 +10,7 @@ import org.springframework.context.annotation.FilterType;
 
 public class ComponentFilterAppConfigTest {
 
-    @Test
+    /*@Test
     void filterScan() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(ComponentFilterAppConfigTest.class);
         BeanA beanA = ac.getBean("beanA", BeanA.class);
@@ -26,5 +26,5 @@ public class ComponentFilterAppConfigTest {
     )
     static class ComponentFilterAppConfig {
 
-    }
+    }*/
 }

@@ -13,11 +13,12 @@ public class AutowiredTest {
 
     @Test
     void AutowiredOption() {
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext();
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
     }
 
     static class TestBean {
 
+        @Autowired(required = false)
         public void setNoBean1(Member noBean1) {
             System.out.println("noBean1 = " + noBean1);
         }

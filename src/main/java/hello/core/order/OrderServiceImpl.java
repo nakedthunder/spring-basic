@@ -5,11 +5,14 @@ import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRespository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @Component
+//@RequiredArgsConstructor
+// final 에 붙은걸 가지고 생성자를 만들어준다.
 public class OrderServiceImpl implements OrderService{
 
     // 기존의 인터페이스, 구현체를 수정한다. 여기서는 memberRepository, discountPolicy를 사용
@@ -19,8 +22,8 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRespository memberRespository;
     private final DiscountPolicy discountPolicy;
 
+    // 생성자를 통해 구현체를 넣어줌 @RequiredArgsConstructor 인해 생성자 필요없음
     @Autowired
-    // 생성자를 통해 구현체를 넣어줌
     public OrderServiceImpl(MemberRespository memberRespository, DiscountPolicy discountPolicy) {
         this.memberRespository = memberRespository;
         this.discountPolicy = discountPolicy;
