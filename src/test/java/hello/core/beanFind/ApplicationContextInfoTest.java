@@ -18,6 +18,30 @@ public class ApplicationContextInfoTest {
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
+    @DisplayName("모든 빈 출력하기")
+    void findAllBean() {
+        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            Object bean = ac.getBean(beanDefinitionName);
+            System.out.println("빈 이름 = " + beanDefinitionName + " 객체 = " + bean);
+        }
+    }
+
+    @Test
+    @DisplayName("애플리케이션 빈 출력하기")
+    void findApplicationBean() {
+        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
+
+            if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
+                Object bean = ac.getBean(beanDefinitionName);
+                System.out.println("이름 = " + beanDefinitionName + "객체 = " + bean);
+            }
+        }
+    }
+
+    @Test
     @DisplayName("find bean by bean name")
     void findBeanByName() {
         MemberService memberService = ac.getBean("memberService", MemberService.class);
@@ -36,7 +60,7 @@ public class ApplicationContextInfoTest {
     @Test
     @DisplayName("구현체 타입으로 조회")
     void findBeanByName2() {
-        // 근데 좋지않은 구현체에 의존했기 때문
+        // 근데 좋지않음 구현체에 의존했기 때문 ac.getBean("memberService", MemberServiceImpl.class);
         MemberService memberService = ac.getBean("memberService", MemberServiceImpl.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
@@ -45,7 +69,7 @@ public class ApplicationContextInfoTest {
     @Test
     @DisplayName("fial find by beanName")
     void findBeanByNameX() {
-        // 이 오른쪽 로직을 실행하면 이 예외가 터져야한다. 안터지면 실패 터지면 성공 (람다식사용)
+        // 이 오른쪽 로직을 실행하면 "이 예외가 터져야한다". 안터지면 실패 터지면 성공 (람다식사용)
         assertThrows(NoSuchBeanDefinitionException.class, () -> ac.getBean("xxxxx", MemberService.class));
     }
 
