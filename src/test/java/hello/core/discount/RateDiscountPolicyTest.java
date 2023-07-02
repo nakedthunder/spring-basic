@@ -34,6 +34,6 @@ class RateDiscountPolicyTest {
         //when
         int discount = discountPolicy.discount(member, 20000);
         //then
-        assertThat(discount).isEqualTo(1000); // BASIC이니깐 0을 기대함
+        assertThat(discount).isEqualTo(0); // BASIC이니깐 0을 기대함
     }
 }

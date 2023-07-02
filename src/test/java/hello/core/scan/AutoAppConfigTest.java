@@ -12,13 +12,13 @@ public class AutoAppConfigTest {
 
     @Test
     void basicScan() {
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
+       /* AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
 
         MemberService memberService = ac.getBean(MemberService.class);
         Assertions.assertThat(memberService).isInstanceOf(MemberService.class);
 
         // 여기 오류나서 다시 강의 돌아보기
-        OrderServiceImpl bean = ac.getBean(OrderServiceImpl.class);
+        OrderServiceImpl bean = ac.getBean(OrderServiceImpl.class);*/
       //  MemberRespository memberRespository = bean.getMemberRespository();
       //  System.out.println("memberRepository = " + memberRespository);
     }

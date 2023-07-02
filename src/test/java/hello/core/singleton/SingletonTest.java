@@ -30,6 +30,7 @@ public class SingletonTest {
     @Test
     @DisplayName("싱글톤 패턴을 적용한 객체 사용")
     void singletonServiceTest() {
+        // 싱글톤을 getInstance로 조회: 같은 객체 인스턴스를 반환
         SingletonService singletonService1 = SingletonService.getInstance();
         SingletonService singletonService2 = SingletonService.getInstance();
 
