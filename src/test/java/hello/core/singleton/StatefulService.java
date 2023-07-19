@@ -4,7 +4,6 @@ public class StatefulService {
 
     // 문제발생 : 상태를 유지하는 필드
     //private int price;
-
     /**
      *
      * @return price
@@ -15,10 +14,7 @@ public class StatefulService {
        // this.pirce = price; // 문제발생: 여기가 문제 ! ! !
         return price;
     }
-
    /* public int getPirce() {
         return pirce;
     }*/
-
-
 }
